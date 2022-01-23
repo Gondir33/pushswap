@@ -19,10 +19,12 @@ void	s_making_stack(int d, t_stack **top)
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		exit(1);
-	new->next = NULL;
 	new->d = d;
 	if (!*top)
+	{
+		new->next = NULL;
 		*top = new;
+	}
 	else
 	{
 		new->next = *top;

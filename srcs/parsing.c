@@ -105,11 +105,17 @@ int	main(int argc, char **argv)
 	topb = NULL;
 	if (argc != 2)
 		return (1);
+	if (!argv[1][0])
+	{
+		write(1, "\n", 1);
+		exit(0);
+	}
 	ft_parse(argv[1], &topa);
 	if (!a_is_sorted(topa, &n))
 	{
 		write(1, "A have already sorted\n", 22);
 		exit (0);
 	}
-	start_sorting(topa, topb);
+	index_for_stack(topa, n);
+	start_sorting(&topa, &topb, n);
 }
