@@ -32,45 +32,51 @@ void	s_making_stack(int d, t_stack **top)
 	}
 }
 
-void	s_swap(t_stack **top)
+int	s_swap(t_stack **top)
 {
 	t_stack	*tmp;
 
 	if (!*top)
-		return ;
+		return (1);
 	else if ((*top)->next == NULL)
-		return ;
+		return (1);
 	tmp = *top;
 	*top = (*top)->next;
 	tmp->next = (*top)->next;
 	(*top)->next = tmp;
+	return (0);
 }
 
-void	s_push(t_stack **from, t_stack **to)
+int	s_push(t_stack **from, t_stack **to)
 {
 	t_stack	*tmp1;
 
 	if (!(*from))
-		return ;
+		return (1);
 	if (!(*to))
 	{
 		tmp1 = *from;
 		(*from) = (*from)->next;
 		*to = tmp1;
 		(*to)->next = NULL;
-		return ;
+		return (0);
 	}
 	tmp1 = *from;
 	(*from) = (*from)->next;
 	tmp1->next = *to;
 	(*to) = tmp1;
+	return (0);
 }
 
-void	s_rotate(t_stack **top)
+int	s_rotate(t_stack **top)
 {
 	t_stack	*end;
 	t_stack	*tmp;
 
+	if(!*top)
+		return (1);
+	if ((*top)->next == NULL)
+		return (1);
 	end = *top;
 	*top = (*top)->next;
 	tmp = *top;
@@ -78,13 +84,18 @@ void	s_rotate(t_stack **top)
 		tmp = tmp->next;
 	tmp->next = end;
 	end->next = NULL;
+	return (0);
 }
 
-void	s_reverse_rotate(t_stack **top)
+int	s_reverse_rotate(t_stack **top)
 {
 	t_stack	*fir;
 	t_stack	*tmp;
 
+	if(!*top)
+		return (1);
+	if ((*top)->next == NULL)
+		return (1);
 	fir = *top;
 	while ((*top)->next->next)
 		*top = (*top)->next;
@@ -92,4 +103,5 @@ void	s_reverse_rotate(t_stack **top)
 	*top = (*top)->next;
 	(*top)->next = fir;
 	tmp->next = NULL;
+	return (0);
 }

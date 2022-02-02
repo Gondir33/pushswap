@@ -112,10 +112,8 @@ int	main(int argc, char **argv)
 	}
 	ft_parse(argv[1], &topa);
 	if (!a_is_sorted(topa, &n))
-	{
-		write(1, "A have already sorted\n", 22);
 		exit (0);
-	}
 	index_for_stack(topa, n);
-	start_sorting(&topa, &topb, n);
+	start_sorting(topa, topb, n);
+	exit(0);
 }

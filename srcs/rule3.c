@@ -14,20 +14,22 @@
 
 void	rra(t_stack **a)
 {
-	s_reverse_rotate(a);
+	if (s_reverse_rotate(a))
+		return ;
 	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack **b)
 {
-	s_reverse_rotate(b);
+	if (s_reverse_rotate(b))
+		return ;
 	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
 {
-	s_reverse_rotate(a);
-	s_reverse_rotate(b);
+	if (s_reverse_rotate(a) || s_reverse_rotate(b))
+		return ;
 	write(1, "rrr\n", 4);
 }
 
