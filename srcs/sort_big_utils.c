@@ -60,5 +60,5 @@ int	smart_rotate_b(t_stack **a, t_stack **b)
 		else
 			swap = 1;
 	}
-	return (0);
+	return (swap);
 }

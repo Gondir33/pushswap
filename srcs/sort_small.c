@@ -44,8 +44,9 @@ void	sort_less_5(t_stack *a, t_stack *b, int n)
 	pb(&a, &b);
 	sort_3(a);
 	if (n == 5)
-		
-
+		sm_push(&a, &b);
+	sm_push(&a, &b);
+	sort_one(&a, &b);
 }
 
 void	sort_small(t_stack *a, t_stack *b, int n)
