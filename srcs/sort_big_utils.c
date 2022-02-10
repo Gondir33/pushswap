@@ -44,7 +44,7 @@ int	smart_rotate_b(t_stack **a, t_stack **b)
 
 	cnt = 0;
 	size = size_stack(*b);
-	swap = 1;
+	swap = 0;
 	tmp = *b;
 	while (tmp->index != size - 1 && ++cnt)
 		tmp = tmp->next;

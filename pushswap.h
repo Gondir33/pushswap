@@ -49,6 +49,7 @@ int		smart_rotate_b(t_stack **a, t_stack **b);
 int		size_stack(t_stack *top);
 void	index_for_stack(t_stack *atop, int size);
 void	sm_push(t_stack **a, t_stack **b);
-void	sort_one(t_stack **a);
+void	sort_a(t_stack **a);
+void	sort_small(t_stack *a, t_stack *b, int n);
 
 #endif

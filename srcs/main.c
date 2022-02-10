@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../pushswap.h"
-
+#include <stdio.h>
 int	stack_is_dup(t_stack *top)
 {
 	t_stack	*sec;
@@ -55,6 +55,8 @@ void	ft_parse(char *s, t_stack **top)
 	int	len;
 
 	len = ft_strlen(s) - 1;
+	if (s[len] == ' ')
+		--len;
 	while (len >= 0)
 	{
 		s_making_stack(get_arg(s, &len), top);
@@ -100,20 +102,21 @@ int	main(int argc, char **argv)
 	int		n;
 	t_stack	*topb;
 
-	n = 1;
-	topa = NULL;
-	topb = NULL;
-	if (argc != 2)
-		return (1);
-	if (!argv[1][0])
-	{
-		write(1, "\n", 1);
-		exit(0);
-	}
-	ft_parse(argv[1], &topa);
-	if (!a_is_sorted(topa, &n))
-		exit (0);
-	index_for_stack(topa, n);
-	start_sorting(topa, topb, n);
-	exit(0);
+	printf("arg: %s", argv[1]);
+	// n = 1;
+	// topa = NULL;
+	// topb = NULL;
+	// if (argc != 2)
+	// 	return (1);
+	// if (!argv[1][0])
+	// {
+	// 	write(1, "\n", 1);
+	// 	exit(0);
+	// }
+	// ft_parse(argv[1], &topa);
+	// if (!a_is_sorted(topa, &n))
+	// 	exit (0);
+	// index_for_stack(topa, n);
+	// start_sorting(topa, topb, n);
+	// exit(0);
 }

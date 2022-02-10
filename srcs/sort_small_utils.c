@@ -12,24 +12,24 @@
 
 #include "../pushswap.h"
 
-int	min_max(t_stack *top, t_stack *elem, int find_max)
+int	min_max(t_stack *a, t_stack *b, int find_min)
 {
-	if (find_max == 0)
+	if (find_min)
 	{
-		while (top)
+		while (a)
 		{
-			if (top->index > elem->index)
+			if (a->index < b->index)
 				return (0);
-			top = top->next;
+			a = a->next;
 		}
 	}
 	else
 	{
-		while (head)
+		while (a)
 		{
-			if (top->index > elem->index)
-				return (0)
-			top = top->next;
+			if (a->index > b->index)
+				return (0);
+			a = a->next;
 		}
 	}
 	return (1);
@@ -48,35 +48,52 @@ void	sm_rotate_a(t_stack **a, int n)
 			ra(a);
 }
 
-int	get_pos(t_stack *top, int index)
+static int	get_pos(t_stack *a, int index_b)
 {
-	int	pos;
-	int	prev_index;
+	int		pos;
+	t_stack	*tmp;
+	t_stack	*last;
 
 	pos = 0;
+	last = a;
+	tmp = a;
+	while (last->next)
+		last = last->next;
+	if (!(a && !(index_b < a->index && index_b > last->index)))
+	{
+		pos++;
+		a = a->next;
+	}
+	while (a && !(index_b < a->index && index_b > tmp->index))
+	{
+		pos++;
+		a = a->next;
+		tmp = tmp->next;
+	}
+	return (pos);
 }
 
 void	sm_push(t_stack **a, t_stack **b)
 {
-	if (min_max(*a, *b, 0))
+	if (min_max(*a, *b, 1))
 	{
-		sort_one(a);
+		sort_a(a);
 		pa(b, a);
 	}
-	else if (min_max(*a, *b, 1))
+	else if (min_max(*a, *b, 0))
 	{
-		sort_one(a);
+		sort_a(a);
 		pa(b, a);
 		ra(a);
 	}
 	else
 	{
-		sm_rotate_a();
-		pa(a);
+		sm_rotate_a(a, get_pos(*a, (*b)->index));
+		pa(b, a);
 	}
 }
 
-void	sort_one(t_stack **a)
+void	sort_a(t_stack **a)
 {
 	int		count;
 	t_stack	*tmp;
@@ -85,10 +102,10 @@ void	sort_one(t_stack **a)
 	tmp = *a;
 	while (tmp)
 	{
-		if (min_max(*a, tmp, 0))
+		if (min_max(*a, tmp, 1))
 			break ;
-		cnt++;
+		count++;
 		tmp = tmp->next;
 	}
-	sm_rotate_a(a, cnt);
+	sm_rotate_a(a, count);
 }

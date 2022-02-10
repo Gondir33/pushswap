@@ -12,13 +12,13 @@
 
 #include "../pushswap.h"
 
-void	sort_3(t_stack *a)
+static void	sort_3(t_stack *a)
 {
 	int	arr[3];
 
-	arr[0] = a->d;
-	arr[1] = a->next->d;
-	arr[2] = a->next->next->d;
+	arr[0] = a->index;
+	arr[1] = a->next->index;
+	arr[2] = a->next->next->index;
 	if (arr[0] > arr[1] && arr[1] < arr[2] && arr[2] > arr[0])
 		sa(&a);
 	else if (arr[0] > arr[1] && arr[1] > arr[2] && arr[2] < arr[0])
@@ -37,7 +37,7 @@ void	sort_3(t_stack *a)
 		rra(&a);
 }
 
-void	sort_less_5(t_stack *a, t_stack *b, int n)
+static void	sort_less_5(t_stack *a, t_stack *b, int n)
 {
 	if (n == 5)
 		pb(&a, &b);
@@ -46,7 +46,7 @@ void	sort_less_5(t_stack *a, t_stack *b, int n)
 	if (n == 5)
 		sm_push(&a, &b);
 	sm_push(&a, &b);
-	sort_one(&a, &b);
+	sort_a(&a);
 }
 
 void	sort_small(t_stack *a, t_stack *b, int n)
