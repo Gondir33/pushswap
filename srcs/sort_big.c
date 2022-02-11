@@ -52,11 +52,11 @@ void	push_back(t_stack **a, t_stack **b)
 	}
 }
 
-void	sort_big(t_stack *a, t_stack *b, int n)
+void	sort_big(t_stack **a, t_stack **b, int n)
 {
 	int	chunk_size;
 
 	chunk_size = n / 12 + 22;
-	push_in_chunks(&a, &b, chunk_size);
-	push_back(&a, &b);
+	push_in_chunks(a, b, chunk_size);
+	push_back(a, b);
 }

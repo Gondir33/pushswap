@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:10:10 by sbendu            #+#    #+#             */
-/*   Updated: 2022/01/05 12:59:41 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/02/11 20:00:05 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,4 @@ void	rrr(t_stack **a, t_stack **b)
 	if (s_reverse_rotate(a) || s_reverse_rotate(b))
 		return ;
 	write(1, "rrr\n", 4);
-}
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_pow_ten(int n)
-{
-	int	i;
-	int	pow;
-
-	pow = 1;
-	i = 0;
-	while (i < n)
-	{
-		pow = 10 * pow;
-		i++;
-	}
-	return (pow);
 }

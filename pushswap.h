@@ -23,7 +23,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	output_stack(t_stack *top);
 void	s_making_stack(int d, t_stack **top);
 int		s_swap(t_stack **top);
 int		s_push(t_stack **from, t_stack **to);
@@ -42,14 +41,15 @@ void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 int		ft_pow_ten(int n);
 int		ft_strlen(char *s);
-int		get_util_arg(char *s, int *i);
+int		get_util_arg(char *s, int *i, t_stack *top);
 void	start_sorting(t_stack *a, t_stack *b, int size);
-void	sort_big(t_stack *a, t_stack *b, int n);
+void	sort_big(t_stack **a, t_stack **b, int n);
 int		smart_rotate_b(t_stack **a, t_stack **b);
 int		size_stack(t_stack *top);
 void	index_for_stack(t_stack *atop, int size);
 void	sm_push(t_stack **a, t_stack **b);
 void	sort_a(t_stack **a);
-void	sort_small(t_stack *a, t_stack *b, int n);
+void	sort_small(t_stack **a, t_stack **b, int n);
+void	ft_exit(t_stack *a, int exit_suck);
 
 #endif

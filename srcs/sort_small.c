@@ -12,52 +12,53 @@
 
 #include "../pushswap.h"
 
-static void	sort_3(t_stack *a)
+static void	sort_3(t_stack **a)
 {
 	int	arr[3];
 
-	arr[0] = a->index;
-	arr[1] = a->next->index;
-	arr[2] = a->next->next->index;
+	arr[0] = (*a)->index;
+	arr[1] = (*a)->next->index;
+	arr[2] = (*a)->next->next->index;
 	if (arr[0] > arr[1] && arr[1] < arr[2] && arr[2] > arr[0])
-		sa(&a);
+		sa(a);
 	else if (arr[0] > arr[1] && arr[1] > arr[2] && arr[2] < arr[0])
 	{
-		sa(&a);
-		rra(&a);
+		sa(a);
+		rra(a);
 	}
 	else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[2] < arr[0])
-		ra(&a);
+		ra(a);
 	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[2] > arr[0])
 	{
-		sa(&a);
-		ra(&a);
+		sa(a);
+		ra(a);
 	}
 	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[2] < arr[0])
-		rra(&a);
+		rra(a);
 }
 
-static void	sort_less_5(t_stack *a, t_stack *b, int n)
+static void	sort_less_5(t_stack **a, t_stack **b, int n)
 {
 	if (n == 5)
-		pb(&a, &b);
-	pb(&a, &b);
+		pb(a, b);
+	pb(a, b);
 	sort_3(a);
 	if (n == 5)
-		sm_push(&a, &b);
-	sm_push(&a, &b);
-	sort_a(&a);
+		sm_push(a, b);
+	sm_push(a, b);
+	sort_a(a);
 }
 
-void	sort_small(t_stack *a, t_stack *b, int n)
+void	sort_small(t_stack **a, t_stack **b, int n)
 {
 	if (n == 2)
 	{
-		if (a->d > a->next->d)
-			sa(&a);
+		if ((*a)->d > (*a)->next->d)
+			sa(a);
 	}
 	else if (n == 3)
 		sort_3(a);
 	else
 		sort_less_5(a, b, n);
+
 }

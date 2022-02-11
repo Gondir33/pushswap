@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:07:11 by sbendu            #+#    #+#             */
-/*   Updated: 2022/01/05 14:35:39 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/02/11 19:59:47 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,4 @@ void	rr(t_stack **a, t_stack **b)
 	if (s_rotate(a) || s_rotate (b))
 		return ;
 	write(1, "rr\n", 3);
-}
-
-int	get_util_arg(char *s, int *i)
-{
-	int	arg;
-	int	n;
-
-	arg = 0;
-	n = 0;
-	while (s[*i] >= '0' && s[*i] <= '9')
-	{
-		arg = arg + (s[*i] - '0') * ft_pow_ten(n);
-		(*i)--;
-		n++;
-		if (arg < 0)
-		{
-			write(1, "Error\n", 6);
-			exit (1);
-		}
-	}
-	return (arg);
 }

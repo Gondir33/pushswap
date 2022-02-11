@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../pushswap.h"
-#include <stdio.h>
+
 int	stack_is_dup(t_stack *top)
 {
 	t_stack	*sec;
@@ -32,14 +32,14 @@ int	stack_is_dup(t_stack *top)
 	return (1);
 }
 
-int	get_arg(char *s, int *i)
+int	get_arg(char *s, int *i, t_stack *top)
 {
 	int	flag;
 	int	arg;
 	int	n;
 
 	flag = 1;
-	arg = get_util_arg(s, i);
+	arg = get_util_arg(s, i, top);
 	if (s[*i] == '-')
 	{
 		flag = -1;
@@ -59,18 +59,18 @@ void	ft_parse(char *s, t_stack **top)
 		--len;
 	while (len >= 0)
 	{
-		s_making_stack(get_arg(s, &len), top);
+		s_making_stack(get_arg(s, &len, *top), top);
 		if (!stack_is_dup(*top))
 		{
 			write(1, "Error\n", 6);
-			exit (EXIT_FAILURE);
+			ft_exit(*top, 1);
 		}
 		if (len < 0)
 			break ;
 		if (s[len] != ' ')
 		{
 			write(1, "Error\n", 6);
-			exit (EXIT_FAILURE);
+			ft_exit(*top, 1);
 		}
 		len--;
 	}
@@ -102,21 +102,19 @@ int	main(int argc, char **argv)
 	int		n;
 	t_stack	*topb;
 
-	printf("arg: %s", argv[1]);
-	// n = 1;
-	// topa = NULL;
-	// topb = NULL;
-	// if (argc != 2)
-	// 	return (1);
-	// if (!argv[1][0])
-	// {
-	// 	write(1, "\n", 1);
-	// 	exit(0);
-	// }
-	// ft_parse(argv[1], &topa);
-	// if (!a_is_sorted(topa, &n))
-	// 	exit (0);
-	// index_for_stack(topa, n);
-	// start_sorting(topa, topb, n);
-	// exit(0);
+	n = 1;
+	topa = NULL;
+	topb = NULL;
+	if (argc != 2)
+		return (1);
+	if (!argv[1][0])
+	{
+		write(1, "\n", 1);
+		return (0);
+	}
+	ft_parse(argv[1], &topa);
+	if (!a_is_sorted(topa, &n))
+		ft_exit (topa, 0);
+	index_for_stack(topa, n);
+	start_sorting(topa, topb, n);
 }
