@@ -17,7 +17,7 @@ int	size_stack(t_stack *top)
 	int	i;
 
 	i = 0;
-	while(top)
+	while (top)
 	{
 		top = top->next;
 		++i;
@@ -38,7 +38,7 @@ int	try_push_next(t_stack **a, t_stack **b, int size, int swap)
 int	smart_rotate_b(t_stack **a, t_stack **b)
 {
 	int		cnt;
-	int 	size;
+	int		size;
 	t_stack	*tmp;
 	int		swap;
 
@@ -48,7 +48,7 @@ int	smart_rotate_b(t_stack **a, t_stack **b)
 	tmp = *b;
 	while (tmp->index != size - 1 && ++cnt)
 		tmp = tmp->next;
-	while((*b)->index != size - 1)
+	while ((*b)->index != size - 1)
 	{
 		if (!try_push_next(a, b, size, swap))
 		{

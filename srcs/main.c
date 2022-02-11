@@ -36,7 +36,6 @@ int	get_arg(char *s, int *i, t_stack *top)
 {
 	int	flag;
 	int	arg;
-	int	n;
 
 	flag = 1;
 	arg = get_util_arg(s, i, top);

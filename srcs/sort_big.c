@@ -37,7 +37,7 @@ void	push_in_chunks(t_stack **a, t_stack **b, int chunk_size)
 
 void	push_back(t_stack **a, t_stack **b)
 {
-	while(*b)
+	while (*b)
 	{
 		if (smart_rotate_b(a, b))
 		{

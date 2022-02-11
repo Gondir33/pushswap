@@ -13,7 +13,7 @@ SRC =	./srcs/main.c ./srcs/rule1.c ./srcs/rule2.c ./srcs/rule3.c ./srcs/utils.c\
 all:	$(NAME)
 
 $(NAME):	$(SRC) 
-	$(CC) pushswap.h $(SRC) -o $(NAME)
+	$(CC) $(CFLAGS) pushswap.h $(SRC) -o $(NAME)
 
 fclean:
 	rm -rf $(NAME)

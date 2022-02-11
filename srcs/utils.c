@@ -73,7 +73,7 @@ int	s_rotate(t_stack **top)
 	t_stack	*end;
 	t_stack	*tmp;
 
-	if(!*top)
+	if (!*top)
 		return (1);
 	if ((*top)->next == NULL)
 		return (1);
@@ -92,7 +92,7 @@ int	s_reverse_rotate(t_stack **top)
 	t_stack	*fir;
 	t_stack	*tmp;
 
-	if(!*top)
+	if (!*top)
 		return (1);
 	if ((*top)->next == NULL)
 		return (1);

@@ -60,5 +60,4 @@ void	sort_small(t_stack **a, t_stack **b, int n)
 		sort_3(a);
 	else
 		sort_less_5(a, b, n);
-
 }

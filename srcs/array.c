@@ -6,15 +6,16 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:21:24 by sbendu            #+#    #+#             */
-/*   Updated: 2022/02/02 21:23:00 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/02/12 00:50:50 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap.h"
 
-int	*make_array(int *a, t_stack *atop, int size)
+int	*make_array(t_stack *atop, int size)
 {
 	int	i;
+	int	*a;
 
 	i = 0;
 	a = (int *)malloc(sizeof(int) * size);
@@ -61,7 +62,7 @@ void	index_for_stack(t_stack *atop, int size)
 	t_stack	*fir;
 
 	i = 0;
-	a = make_array(a, atop, size);
+	a = make_array(atop, size);
 	a = sort_array(a, size);
 	while (i < size)
 	{
