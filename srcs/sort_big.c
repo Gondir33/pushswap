@@ -42,6 +42,11 @@ void	push_back(t_stack **a, t_stack **b)
 		if (smart_rotate_b(a, b))
 		{
 			pa(b, a);
+			if (*b == NULL)
+			{
+				sa(a);
+				ft_exit(*a, 0);
+			}
 			if ((*b)->next != NULL && (*b)->index < (*b)->next->index)
 				ss(a, b);
 			else
@@ -56,7 +61,7 @@ void	sort_big(t_stack **a, t_stack **b, int n)
 {
 	int	chunk_size;
 
-	chunk_size = n / 12 + 22;
+	chunk_size = n / 10 + 22;
 	push_in_chunks(a, b, chunk_size);
 	push_back(a, b);
 }

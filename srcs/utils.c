@@ -36,6 +36,8 @@ int	s_swap(t_stack **top)
 {
 	t_stack	*tmp;
 
+	if (!top)
+		return (1);
 	if (!*top)
 		return (1);
 	else if ((*top)->next == NULL)

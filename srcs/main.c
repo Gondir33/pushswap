@@ -100,20 +100,26 @@ int	main(int argc, char **argv)
 	t_stack	*topa;
 	int		n;
 	t_stack	*topb;
+	char	*s;
+	int		flag;
 
 	n = 1;
+	flag = 0;
 	topa = NULL;
 	topb = NULL;
-	if (argc != 2)
+	if (argc == 1)
 		return (1);
-	if (!argv[1][0])
+	s = argv[1];
+	if (argc > 2)
 	{
-		write(1, "\n", 1);
-		return (0);
+		s = ft_parse_2(argc, argv, s);
+		flag = 1;
 	}
-	ft_parse(argv[1], &topa);
+	ft_parse(s, &topa);
+	if (flag == 1)
+		free(s);
 	if (!a_is_sorted(topa, &n))
-		ft_exit (topa, 0);
+		ft_exit(topa, 0);
 	index_for_stack(topa, n);
 	start_sorting(topa, topb, n);
 }

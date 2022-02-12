@@ -6,7 +6,7 @@
 /*   By: sbendu <sbendu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 19:59:18 by sbendu            #+#    #+#             */
-/*   Updated: 2022/02/12 00:52:07 by sbendu           ###   ########.fr       */
+/*   Updated: 2022/02/12 21:30:00 by sbendu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,29 @@ void	ft_exit(t_stack *top, int exit_suck)
 	}
 	free(tmp);
 	exit(exit_suck);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	size_t	i;
+	size_t	j;
+	char	*s;
+
+	i = -1;
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	s = malloc(ft_strlen(s1) + ft_strlen(s2) + 2);
+	if (!s)
+		return (NULL);
+	while (s1[++i])
+		s[i] = s1[i];
+	s[i++] = ' ';
+	while (s2[j])
+	{
+		s[i + j] = s2[j];
+		j++;
+	}
+	s[i + j] = 0;
+	return (s);
 }

@@ -51,5 +51,7 @@ void	sm_push(t_stack **a, t_stack **b);
 void	sort_a(t_stack **a);
 void	sort_small(t_stack **a, t_stack **b, int n);
 void	ft_exit(t_stack *a, int exit_suck);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_parse_2(int argc, char **argv, char *s);
 
 #endif

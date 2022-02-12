@@ -35,9 +35,9 @@ int	min_max(t_stack *a, t_stack *b, int find_min)
 	return (1);
 }
 
-void	sm_rotate_a(t_stack **a, int n)
+static void	sm_rotate_a(t_stack **a, int n)
 {
-	if (n > size_stack(*a))
+	if (n > size_stack(*a) / 2)
 	{
 		n = size_stack(*a) - n;
 		while (n--)
@@ -59,7 +59,7 @@ static int	get_pos(t_stack *a, int index_b)
 	tmp = a;
 	while (last->next)
 		last = last->next;
-	if (!(a && !(index_b < a->index && index_b > last->index)))
+	if (a && !(index_b < a->index && index_b > last->index))
 	{
 		pos++;
 		a = a->next;
