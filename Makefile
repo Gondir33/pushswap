@@ -15,7 +15,7 @@ OBJ = $(SRC:.c=.o)
 all:	$(NAME)
 
 $(NAME):	$(OBJ) 
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $^ -o $@ $(CFLAGS) $(LDLIBS) -o $(NAME)
 
 %.o: %.c  pushswap.h $(SRC)
 	$(CC) $(CFLAGS) -I $(INCLD) -c $< -o $(<:.c=.o)
